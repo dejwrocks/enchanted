@@ -1,3 +1,4 @@
+import Director from "./Director";
 import Sprite from "./Sprite";
 
 export default class ImageSprite extends Sprite {
@@ -30,7 +31,7 @@ export default class ImageSprite extends Sprite {
     if (this._animationFlag === false) {
       return;
     }
-    const previousRenderTime = Director.getInstance().previousRenderTime();
+    const previousRenderTime = Director.getInstance().previousRenderTime;
     let renderInterval = Date.now() - previousRenderTime;
     this._interval += renderInterval;
     if (this._interval >= this.animationInterval) {
