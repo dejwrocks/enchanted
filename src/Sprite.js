@@ -5,6 +5,7 @@ export default class Sprite {
     this._ctx = null;
     this._x = 0;
     this._y = 0;
+    this._show = true;
   }
 
   draw() {
@@ -12,10 +13,18 @@ export default class Sprite {
   }
 
   render() {
+    if (!this.show) {
+      return;
+    }
     this.ctx.save();
     this.ctx.translate(this.posX, this.posY);
     this.draw();
     this.ctx.restore();
+  }
+
+  setPosition(x, y) {
+    this.posX = x;
+    this.posY = y;
   }
 
   get ctx() {
@@ -42,6 +51,14 @@ export default class Sprite {
     this._y = y;
   }
 
+  get show() {
+    return this._show;
+  }
+
+  set show(flag) {
+    this._show = flag;
+  }
+
   get position() {
     return {
       x: this.posX,
@@ -54,8 +71,4 @@ export default class Sprite {
     this.posY = point.y;
   }
 
-  setPosition(x, y) {
-    this.posX = x;
-    this.posY = y;
-  }
 }
