@@ -40,6 +40,7 @@ export default class ImageSprite extends Sprite {
       this._interval = 0;
       if (this._currentFrameIndex >= this._animationFrames.length) {
         this._animationFlag = false;
+        this._currentFrameIndex = 0;
         if (this.backToOriginalFrameFlag) {
           this.image = this._animationFrames[0];
         }
