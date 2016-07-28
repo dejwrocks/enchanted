@@ -76,6 +76,26 @@ class Director {
     });
   }
 
+  loadImage(imageUrl) {
+    return new Promise((resolve, reject) => {
+
+      let image = new Image();
+      let key = imageUrl.match(new RegExp(`[^/]*.png$`));
+      key = key[0];
+
+      image.onload = () => {
+        this.images[key] = image;
+        resolve(this.images);
+      };
+
+      image.onerror = function() {
+        reject(new Error("load image failed"));
+      };
+
+      image.src = imageUrl;
+    });
+  }
+
   enableTouch(flag) {
     //讲接收到的touch事件传递给Scene
     let style = document.defaultView.getComputedStyle(this.ctx.canvas);
