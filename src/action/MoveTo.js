@@ -19,11 +19,16 @@ class MoveTo extends Action {
 
     if (percent === 1) {  //action finished
       this.executor.setPosition(newX, newY);
-      let index = this.executor._actions.indexOf(this);
-      this.executor._actions.splice(index, 1);  //remove action after finished
+      this.halt();
     } else {
       this.executor.setPosition(newX, newY);
     }
+  }
+
+  //remove action after finished
+  halt() {
+    let index = this.executor._actions.indexOf(this);
+    this.executor._actions.splice(index, 1);
   }
 }
 
