@@ -1,4 +1,4 @@
-
+import Action from "./action/Action";
 
 export default class Sprite {
   constructor() {
@@ -6,6 +6,7 @@ export default class Sprite {
     this._x = 0;
     this._y = 0;
     this._show = true;
+    this._actions = [];
   }
 
   draw() { //override
@@ -16,10 +17,23 @@ export default class Sprite {
     if (!this.show) {
       return;
     }
+    this._actions.forEach(action => {
+      action.execute();
+    });
     this.ctx.save();
     this.ctx.translate(this.posX, this.posY);
     this.draw();
     this.ctx.restore();
+  }
+
+  runAction(action) {
+    if (!(action instanceof Action)) {
+      throw new Error('argument "action" should be an instance of Action');
+    }
+
+    this._actions.push(action);
+    action.startTime = Date.now();
+    action.executor = this;
   }
 
   setPosition(x, y) {
