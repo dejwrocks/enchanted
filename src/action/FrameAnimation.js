@@ -1,3 +1,4 @@
+import Director from "../Director";
 import Action from "./Action";
 
 class FrameAnimation extends Action {
@@ -7,6 +8,7 @@ class FrameAnimation extends Action {
     this._interval = 0;
     this._currentFrameIndex = 0;
     this._originalImage = null;
+    this._director = Director.getInstance();
 
     //public
     this._frames = frames || [];
@@ -18,7 +20,7 @@ class FrameAnimation extends Action {
     if (this._originalImage === null && this.backToOriginalFrameFlag) {
       this._originalImage = this.executor.image;
     }
-    let renderInterval = Date.now() - this.startTime;
+    let renderInterval = Date.now() - this._director.previousRenderTime;
     this._interval += renderInterval;
     if (this._interval >= this.frameInterval) {
       this.executor.image = this.frames[this._currentFrameIndex];
