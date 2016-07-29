@@ -8,7 +8,7 @@ export default class Sprite {
     this._show = true;
   }
 
-  draw() {
+  draw() { //override
 
   }
 
