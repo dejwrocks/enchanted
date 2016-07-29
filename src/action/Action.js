@@ -3,7 +3,6 @@ class Action {
 
     this._executor = null;
     this._startTime = Date.now();
-    this._duration = 0; //millisecond
   }
 
   set executor(executor) {

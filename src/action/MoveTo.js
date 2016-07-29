@@ -3,10 +3,10 @@ import Action from "./Action";
 class MoveTo extends Action {
   constructor(start, end, duration) {
     super();
-    this._duration = duration;
 
     this._start = start; //point
     this._end = end; //point
+    this._duration = duration || 1000; //millisecond
   }
 
   execute() {
