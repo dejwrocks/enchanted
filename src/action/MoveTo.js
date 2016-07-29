@@ -10,8 +10,6 @@ class MoveTo extends Action {
   }
 
   execute() {
-    // const { previousRenderTime } = Director.getInstance();
-
     let remaining = Math.max(0, this._startTime + this._duration - Date.now());
     let temp = remaining / this._duration || 0;
     let percent = 1 - temp;
@@ -19,7 +17,13 @@ class MoveTo extends Action {
     let newX = (this._end.x - this._start.x) * percent + this._start.x;
     let newY = (this._end.y - this._start.y) * percent + this._start.y;
 
-    this.executor.setPosition(newX, newY);
+    if (percent === 1) {  //action finished
+      this.executor.setPosition(newX, newY);
+      let index = this.executor._actions.indexOf(this);
+      this.executor._actions.splice(index, 1);  //remove action after finished
+    } else {
+      this.executor.setPosition(newX, newY);
+    }
   }
 }
 

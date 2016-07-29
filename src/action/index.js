@@ -1,6 +1,7 @@
 import MoveTo from "./MoveTo";
 
-let ex = {
+const ept = {
   MoveTo
 };
-export default ex;
+
+export default ept;
