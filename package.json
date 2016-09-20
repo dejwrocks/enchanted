@@ -1,6 +1,6 @@
 {
   "name": "enchanted",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Lightweight 2D library for simple games",
   "main": "dist/index.js",
   "scripts": {
