@@ -36,12 +36,6 @@ class FrameAnimation extends Action {
     }
   }
 
-  //remove action after finished
-  halt() {
-    let index = this.executor._actions.indexOf(this);
-    this.executor._actions.splice(index, 1);
-  }
-
   get frames() {
     return this._frames;
   }

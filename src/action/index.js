@@ -1,9 +1,7 @@
 import MoveTo from "./MoveTo";
 import FrameAnimation from "./FrameAnimation";
 
-const ept = {
+export default {
   MoveTo,
   FrameAnimation
 };
-
-export default ept;

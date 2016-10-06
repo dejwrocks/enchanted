@@ -5,6 +5,12 @@ class Action {
     this._startTime = Date.now();
   }
 
+  //remove action after finished
+  halt() {
+    let index = this.executor.actions.indexOf(this);
+    this.executor.actions.splice(index, 1);
+  }
+
   set executor(executor) {
     this._executor = executor;
   }

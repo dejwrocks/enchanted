@@ -2,6 +2,8 @@ import Action from "./action/Action";
 
 export default class Sprite {
   constructor() {
+
+    //public
     this._ctx = null;
     this._x = 0;
     this._y = 0;
@@ -17,7 +19,7 @@ export default class Sprite {
     if (!this.show) {
       return;
     }
-    this._actions.forEach(action => {
+    this.actions.forEach(action => {
       action.execute();
     });
     this.ctx.save();
@@ -31,7 +33,7 @@ export default class Sprite {
       throw new Error('argument "action" should be an instance of Action');
     }
 
-    this._actions.push(action);
+    this.actions.push(action);
     action.startTime = Date.now();
     action.executor = this;
   }
@@ -78,6 +80,10 @@ export default class Sprite {
       x: this.posX,
       y: this.posY
     };
+  }
+
+  get actions() {
+    return this._actions;
   }
 
   set position(point) {

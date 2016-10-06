@@ -5,7 +5,7 @@ import Sprite from "./Sprite";
 import ImageSprite from "./ImageSprite";
 import Action from "./action/index";
 
-let ex = {
+export default {
   Utils,
   Director,
   Scene,
@@ -13,5 +13,3 @@ let ex = {
   ImageSprite,
   Action
 };
-
-export default ex;
