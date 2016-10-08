@@ -44,7 +44,8 @@ class Director {
     this.scaleRatio = width / this.canvasSize.width;
   }
 
-  preload(imageUrls) {
+  preload(imageUrls, keyProducer) {
+    //key Producer: a funtion returns the key
     return new Promise((resolve, reject) => {
       let count = 0;
       if (imageUrls.length === 0) {
@@ -55,8 +56,7 @@ class Director {
       for (let i = imageUrls.length - 1; i >= 0; i--) {
         let image = new Image();
         let imageUrl = imageUrls[i];
-        let key = imageUrl.match(new RegExp(`[^/]*.png$`));
-        key = key[0];
+        let key = keyProducer(imageUrl);
 
         image.onload = () => {
           count++;
@@ -76,12 +76,11 @@ class Director {
     });
   }
 
-  loadImage(imageUrl) {
+  loadImage(imageUrl, keyProducer) {
     return new Promise((resolve, reject) => {
 
       let image = new Image();
-      let key = imageUrl.match(new RegExp(`[^/]*.png$`));
-      key = key[0];
+      let key = keyProducer(imageUrl);
 
       image.onload = () => {
         this.images[key] = image;
