@@ -11,6 +11,14 @@ export default class ImageSprite extends Sprite {
     this.ctx.drawImage(this.image, 0, 0, this.image.width, this.image.height);
   }
 
+  get width() {
+    return this._image.width;
+  }
+
+  get height() {
+    return this._image.height;
+  }
+
   get image() {
     return this._image;
   }
