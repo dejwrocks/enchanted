@@ -7,6 +7,8 @@ export default class Sprite {
     this._ctx = null;
     this._x = 0;
     this._y = 0;
+    this._scaleX = 1.0;
+    this._scaleY = 1.0;
     this._show = true;
     this._actions = [];
   }
@@ -24,6 +26,7 @@ export default class Sprite {
     });
     this.ctx.save();
     this.ctx.translate(this.posX, this.posY);
+    this.ctx.scale(this.scaleX, this.scaleY);
     this.draw();
     this.ctx.restore();
   }
@@ -43,12 +46,33 @@ export default class Sprite {
     this.posY = y;
   }
 
+  setScale(x, y) {
+    this.scaleX = x;
+    this.scaleY = y;
+  }
+
   get ctx() {
     return this._ctx;
   }
 
   set ctx(ctx) {
     this._ctx = ctx;
+  }
+
+  get scaleX() {
+    return this._scaleX;
+  }
+
+  set scaleX(x) {
+    this._scaleX = x;
+  }
+
+  get scaleY() {
+    return this._scaleY;
+  }
+
+  set scaleY(y) {
+    this._scaleY = y;
   }
 
   get posX() {
