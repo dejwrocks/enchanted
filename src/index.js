@@ -5,7 +5,7 @@ import Sprite from "./Sprite";
 import ImageSprite from "./ImageSprite";
 import Action from "./action/index";
 
-export default {
+const Obj = {
   Utils,
   Director,
   Scene,
@@ -13,3 +13,5 @@ export default {
   ImageSprite,
   Action
 };
+
+export default Obj;
